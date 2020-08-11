@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>The EvenBrides - Index</title>
+
+
+</head>
+<body>
+  
+  <main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron" style="background-image: url(<%= 'https://technext.github.io/Evento/images/demo/bg-slide-01.jpg' %>)"
+    <div class="container">
+      <h1 class="display-3">Bienvenue sur EvenBrides</h1>
+      <p>Que l'immersion commence!</p>
+      <p><%= button_to "Créer un Event", events_path, class:"btn btn-light", :method => :get %></p>
+      <p><%= button_to "Participer à un Event", events_path, class:"btn btn-light", :method => :get %></p>
+    </div>
+  </div>
+
+
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Voici les Events disponibles:</h1>
+    <p class="lead">Choisi ton Event</p>
+  </div>
+      
+  <div class="container">
+    <div class="row">
+      <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+        <ul class="event-list" >
+          <% Event.all.each_with_index do |event, i| %>
+            <li>
+              <time datetime=<%= event.start_date %>>
+                <span class="day"> <%= event.start_date.day %> </span>
+                <span class="month"> <%= event.start_date.strftime('%b') %> </span>
+                <span class="year"> <%= event.start_date.year %> </span>
+                <span class="time"> </span>
+              </time>
+              <div class="info">
+                <h2 class="title"><%= event.title %></h2>
+                <p class="desc"><a href="<%= event_path(event.id) %>"> <%= event.description %> </a></p>
+                <ul>
+                  <li style="width:50%;"><a href="#website"><span class="fa fa-globe"></span> Website</a></li>
+                  <li style="width:50%;"><span class="fa fa-money"></span> <%= event.price %> €</li>
+                </ul>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Créer un événement</title>
+  </head>
+<body>
+  <!-- Message d'erreur en cas de problème-->
+  <% if @event.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Nous n'avons pas réussi à créer l'event pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+          <% @event.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <!-- Formulaire création évènement -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">  
+        <br><br><br>
+        <h1>Création événement</h1>
+
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+          <div class="form-group">
+            <%= label_tag 'Renseigne un titre : ' %>
+            <%= text_field_tag :event_title %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag 'Indique un lieu : ' %>
+            <%= text_field_tag :event_location %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag 'Met ta description : ' %>
+            <%= text_area_tag :event_description %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag 'Indique une date : ' %>
+            <%= date_field_tag :event_date %>
+          </div>
+          
+          <div class="form-group">
+            <%= label_tag 'Balance un prix : ' %>
+            <%= text_field_tag :event_price %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag 'Complète avec une durée (en minutes, multiple de 5) : ' %>
+            <%= text_field_tag :event_duration %>
+          </div>
+
+          <div class="actions mt-5">
+            <%= submit_tag("Create Event", :class =>"btn btn-primary") %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

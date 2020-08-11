@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EvenbridesV1</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <script src="https://kit.fontawesome.com/46962466a1.js" crossorigin="anonymous"></script>
+ 
+      <!--//  \/ligne bootstrap copier depuis le projet de semaine 1 \/-->
+      <link rel="stylesheet" href="/app/stylesheets/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-expand-lg navbar-success bg-light">
+    
+    <div class="column">
+      <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30163918/1241-768x591.png" class="img-fluid">
+    </div>
+    
+    <div class="navbar-brand column ml-4">
+      <%= link_to "Evenbrides", events_path %>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" id="navbarSupportedContent">
+      
+      <ul class="navbar-nav mr-auto">
+        
+          <div class='container-navbar pl-3'>
+                
+            <li class="nav-item active">
+              <div class="nav-link pl-3"><%= link_to "Créer un Event", new_event_path %> </div>
+            </li>
+
+            <li class="nav-item active">
+              <div class="nav-link pl-3"><%= link_to "Participer à un Event", events_path %> </div>
+            </li>  
+          </div>
+      </ul>
+          <div class="dropdown pr-5 mr-3">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Profil
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <% if user_signed_in? %>
+                  <li class="dropdown-item">
+                    <%= link_to "Mon profil", user_path(current_user) %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+                  </li>
+                <% else %>
+                  <li class="dropdown-item">
+                    <%= link_to "S'inscrire ", new_user_registration_path %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "Se connecter", new_user_session_path %>
+                  </li>
+                <% end %>
+            </div>             
+              
+                  
+          </div>
+          
+        </div>
+      
+    </div>
+     
+    </nav>
+
+    <%= yield %>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+
+
+
+

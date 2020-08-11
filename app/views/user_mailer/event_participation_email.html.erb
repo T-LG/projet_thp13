@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Evènement <%= @event.title %></h1>
+    <p>
+      Salut <%= @user.first_name %>, tu tes inscrit à l'évènement <%= @event.title %> qui aura lieu le <%= @event.start_date %> et durera <%= @event.duration %> minutes.
+    </p>
+    <p>
+      <%= @event.description %>
+    <p> 
+    <p> Pour accéder à plus d'informations, connecte-toi à ton espace via : <%= @url %>.
+
+      À très vite sur EvenBrides !
+    </p>
+  </body>
+</html>
